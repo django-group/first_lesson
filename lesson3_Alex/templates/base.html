@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Home page{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles/style.css'%}">
+</head>
+<body>
+    <header>
+        <img height="200" width="200" src="{% static 'joker.jpg'%}">
+        <nav>
+            <a href="/lesson3_Alex/home">Home page</a>
+            <a href="/lesson3_Alex/my_game">Game</a>
+        </nav>
+    </header>
+    {% include 'aside.html' %}
+
+    {% block content %}
+    <h1>Home Page</h1>
+    <div>Some text</div>
+    {% endblock %}
+
+    <footer>
+        Maybe next time
+    </footer>
+</body>
+</html>

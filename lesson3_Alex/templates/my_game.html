@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block title %} Игра угадай число {% endblock %}
+    {% block content %}
+    <div>
+        Угадай число от 1 до 1000
+    </div>
+    <p>{{ numbers }}</p>
+    {% endblock %}
+</body>
+</html>
