@@ -1,20 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% block head %}
-	{% block title %}{% endblock %}
-	{% block menu %}{% endblock %}
-    {% endblock %}
+	<img src={{logo}} alt="">
+    <h1>{{h1}}</h1>
 </head>
 <body>
-{% block page %}
-	{% block content %}
-	{% endblock %}
-{% endblock %}
-
-{% block footer %}
-	{% block copyright %}
-	{% endblock %}
-{% endblock %}
+{{text}}
 </body>
 </html>
