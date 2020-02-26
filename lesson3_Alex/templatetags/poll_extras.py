@@ -6,7 +6,8 @@ x = random.randint(1, 1000)
 
 
 @register.filter(name="game_number")
-def game(value, x):
+def game(value):
+    global x
     res = x - value
     if res > 200 or res < -200:
         return "red"
