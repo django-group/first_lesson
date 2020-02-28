@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'my_page',
     'my_page_2',
+    'my_page_3',
 ]
 
 MIDDLEWARE = [
