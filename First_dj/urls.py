@@ -23,4 +23,5 @@ urlpatterns = [
     path('lesson3/', include('lesson3_Alex.urls')),
     path('lesson4/', include('lesson4_Alex.urls')),
     path('lesson5/', include('lesson5_Alex.urls')),
+    path('lesson6/', include('lesson6_pract.urls')),
 ]
