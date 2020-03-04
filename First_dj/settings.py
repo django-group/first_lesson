@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'lesson4_Alex',
     'lesson5_Alex',
     'lesson6_pract',
+    'lesson7_Alex',
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGIN_URL = '/account/login'

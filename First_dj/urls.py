@@ -24,4 +24,6 @@ urlpatterns = [
     path('lesson4/', include('lesson4_Alex.urls')),
     path('lesson5/', include('lesson5_Alex.urls')),
     path('lesson6/', include('lesson6_pract.urls')),
+    path('lesson7/', include('lesson7_Alex.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
