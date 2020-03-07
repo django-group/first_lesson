@@ -11,3 +11,8 @@ class Article(models.Model):
     title = models.CharField(max_length=50)
     text = models.TextField(max_length=20000)
     create_d = models.DateField(auto_now=True)
+
+
+class Comments(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    text = models.TextField(max_length=500)

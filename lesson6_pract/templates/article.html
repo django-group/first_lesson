@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-    <p>Author: {{article.author.name}}</p>
-    <p>{{article.title}}</p>
-    <p>{{article.text}}</p>
-    <p>{{article.create_d}}</p>
+<br>
+    <p>Author: {{data.author.name}}</p>
+    <p>{{data.title}}</p>
+    <p>{{data.text}}</p>
+    <p>{{data.create_d}}</p> </br>
+
+    <p>Comments:</p> </br>
+    {% for item in context %}
+    <p>{{ item.text }}</p> </br>
+    {% endfor %}
 </body>
 </html>
