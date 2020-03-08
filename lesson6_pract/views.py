@@ -16,7 +16,7 @@ def main(request):
 def some(request,id):
     try:
         data = models.Article.objects.get(id=id)
-        comments = models.Comments.objects.get(article=id)
+        comments = models.Comments.objects.filter(article=id)
 
     except models.Article.DoesNotExist:
         raise Http404( "Article does not exist")
