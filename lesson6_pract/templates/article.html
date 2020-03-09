@@ -14,5 +14,11 @@
     {% for item in comments %}
     <li>{{ item.text }}</li>
     {% endfor %}
+
+    <form action="add_comment/" method="post">
+        {% csrf_token %}
+        {{ form_comment.as_p }}
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

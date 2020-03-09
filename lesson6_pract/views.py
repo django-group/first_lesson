@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, Http404
-from . import models
+from lesson6_pract import models
+from lesson6_pract import forms
 
 # Create your views here.
 
@@ -26,3 +27,14 @@ def some(request,id):
         "comments": comments,
     }
     return render(request, "article.html", context)
+
+
+def add_comment(request):
+    form_comment = forms.CommentForm(request.POST)
+    if request.method == "POST":
+        form_comment.save()
+
+    context = {
+        "form_comment": form_comment
+    }
+    return render(request, 'article.html', context)
