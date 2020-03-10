@@ -4,5 +4,5 @@ from lesson6_pract.models import Comments
 
 class CommentForm(ModelForm):
     class Meta:
-        models = Comments
+        model = Comments
         fields = ['text']
