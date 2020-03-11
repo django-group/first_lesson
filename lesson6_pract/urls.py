@@ -2,8 +2,7 @@ from django.urls import path, include, re_path
 from lesson6_pract import views
 
 urlpatterns = [
-    path("", views.main),
-    path("main/", views.main),
-    path("<int:id>/", views.ArticleView.as_view(), name='one_page'),
-    path("add_comment/", views.ArticleView.as_view(), name="add_comment"),
+    path("", views.BooksList.as_view(), name="home"),
+    path("main/", views.BooksList.as_view(), name="main"),
+    path("<int:id>/", views.BooksDetail.as_view(), name='one_page'),
 ]
