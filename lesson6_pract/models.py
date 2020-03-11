@@ -12,6 +12,9 @@ class Article(models.Model):
     text = models.TextField(max_length=20000)
     create_d = models.DateField(auto_now=True)
 
+    def get_comments(self):
+        return Comments.objects.filter(article=self)
+
 
 class Comments(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)

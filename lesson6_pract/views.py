@@ -8,7 +8,7 @@ from django.urls import reverse
 
 
 class BooksList(generic.ListView):
-    model = models.Author
+    model = models.Article
     template_name = "lesson6_pract/home.html"
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -26,6 +26,10 @@ class BooksDetail(generic.DetailView):
         context = super().get_context_data(**kwargs)
         context["comment_form"] = self.comment_form
         return context
+
+    def get_queryset(self):
+        product = models.Article.objects.filter(pk=self.kwargs.get("pk"))
+        return product
 
     def post(self, request, *args, **kwargs):
         form = self.comment_form(request.POST)

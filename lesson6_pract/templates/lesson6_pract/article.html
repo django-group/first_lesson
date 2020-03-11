@@ -11,11 +11,11 @@
     <p>{{data.create_d}}</p> </br>
 
     <p>Comments:</p>
-    {% for item in comments %}
+    {% for item in data.get_comments %}
     <li>{{ item.text }}</li>
     {% endfor %}
 
-    <form action="{% url 'add_comment' %}" method="post">
+    <form action="{% url 'main' %}" method="post">
         {% csrf_token %}
         {{ form_comment.as_p }}
         <input type="submit" value="Submit">
