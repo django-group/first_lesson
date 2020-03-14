@@ -1,0 +1,22 @@
+{% extends 'djstore/base.html' %}
+
+{% block content %}
+    <h1>{{ product.name }}</h1>
+    <img src="{{ product.image.url }}">
+    <p>{{ product.description }}</p>
+    <p>{{ product.price }}</p>
+    <p>{{ product.rating }}</p>
+    <p>{{ product.warranty }}</p> </br>
+
+    <h2>Comments:</h2>
+    {% for item in product.get_comments %}
+        <li>{{ item.text }}  {{ item.date }}</li>
+        <p>{{ item.rating }}</p>
+    {% endfor %} </br>
+
+    <form action="." method="POST">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit" value="Send" />
+    </form>
+{% endblock %}

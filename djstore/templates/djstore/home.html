@@ -1,0 +1,11 @@
+{% extends 'djstore/base.html' %}
+
+{% block content %}
+    {% for item in object_list %}
+        <div>
+            <a href="/product/{{ item.slug }}">{{ item.name }}</a>
+            <img src="{{ item.image.url }}">
+            <p>{{ item.price }}</p>
+        </div>
+    {%  endfor %}
+{% endblock %}
