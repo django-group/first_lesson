@@ -5,4 +5,4 @@ from djstore import models
 class CommentForm(ModelForm):
     class Meta:
         model = models.Review
-        fields = ['date', 'text', 'rating']
+        fields = ['text', 'rating']
