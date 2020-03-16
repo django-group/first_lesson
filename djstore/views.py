@@ -10,6 +10,12 @@ from django.urls import reverse
 class ProductList(generic.ListView):
     model = models.Product
     template_name = 'djstore/home.html'
+    form = forms.SearchForm
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.form
+        return context
 
 
 class SearchList(generic.ListView):
