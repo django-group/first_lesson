@@ -17,6 +17,9 @@ class Product(models.Model):
     warranty = models.BooleanField(default=True)
     author = models.CharField(max_length=50)
 
+    def __str__(self):
+        return self.name
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)

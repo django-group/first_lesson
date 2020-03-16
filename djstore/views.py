@@ -12,6 +12,22 @@ class ProductList(generic.ListView):
     template_name = 'djstore/home.html'
 
 
+class SearchList(generic.ListView):
+    form = forms.SearchForm
+    model = models.Product
+    template_name = 'djstore/home.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = self.form
+        search_data = self.request.GET.get('search_field')
+        search_data = models.Product.objects.filter(name__contains=search_data)
+        if not search_data:
+            raise Http404
+        context['object_list'] = search_data
+        return context
+
+
 class ProductDetail(generic.DetailView):
     models = models.Product
     template_name = 'djstore/product_detail.html'

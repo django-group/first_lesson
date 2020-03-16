@@ -1,6 +1,11 @@
 {% extends 'djstore/base.html' %}
 
 {% block content %}
+    <form method="get" action="{% url 'search_url' %}">
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+
     {% for item in object_list %}
         <div>
             <a href="/product/{{ item.slug }}">{{ item.name }}</a>
