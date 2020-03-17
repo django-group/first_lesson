@@ -8,7 +8,7 @@
 
     {% for item in object_list %}
         <div>
-            <a href="/product/{{ item.slug }}">{{ item.name }}</a>
+            <a href="{% url 'product_detail_url'  item.slug %}">{{ item.name }}</a>
             <img src="{{ item.image.url }}">
             <p>{{ item.price }}</p>
         </div>

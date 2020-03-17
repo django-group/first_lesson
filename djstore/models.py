@@ -26,7 +26,7 @@ class Product(models.Model):
         return super().save(*args, **kwargs)
 
     def get_comments(self):
-        return Review.objects.filter(article=self)
+        return Review.objects.filter(product=self)
 
 
 class Review(models.Model):
