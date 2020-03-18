@@ -3,17 +3,20 @@ from djstore import models
 from djstore import forms
 from django.views import generic
 from django.urls import reverse
+from djstore import filters
 
 # Create your views here.
 
 
 class ProductList(generic.ListView):
     model = models.Product
+    filter = filters.ProductFilter
     template_name = 'djstore/home.html'
     form = forms.SearchForm
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['filter'] = self.filter
         context['form'] = self.form
         return context
 
