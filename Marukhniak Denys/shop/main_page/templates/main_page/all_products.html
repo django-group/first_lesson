@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Products of our shop</title>
+</head>
+<body>
+
+    <div class="container">
+        <form method="get" action="{% url 'search_url'  %}">
+            {{ form.as_p }}
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-3">
+                <p>Категории:</p>
+                <ul>
+                    <li>Букеты</li>
+                    <li>Вазоны</li>
+                </ul>
+            </div>
+
+            <div class="col-9">
+                <div class="row row-cols-3">
+                {% for product in products %}
+                    <div class="col-md-4">
+                        <img src="{{product.image.url}}">
+                        <a href="product/{{product.slug}}"> {{product.title}}</a>
+                        {% if product.count_reviews %}
+                            <p>Рейтинг: {{product.get_rating}}.</p>
+                        {% else %}
+                            <p>Нет оценок.</p>
+                        {% endif %}
+                        <p>Цена товара: {{product.price}}</p>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

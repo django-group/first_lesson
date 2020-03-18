@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>{{single_product.title}}</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <p>{{single_product.title}}</p>
+            <img src="{{ single_product.image.url }}">
+            {% if single_product.count_reviews %}
+                <p>Рейтинг товара: {{single_product.get_rating}} (всего оценок {{single_product.count_reviews}})</p>
+            {% else %}
+                <p>У этого товара пока нет оценок.</p>
+            {% endif %}
+        </div>
+        <div class="col">
+            <p>Комментарии:</p>
+            {% for review in recent_reviews %}
+                <p>Оценка товару: {{review.rating_rev}}</p>
+                <p>{{review.text_rev}}</p>
+                <p>Дата отправки: {{review.data}}</p>
+            {% endfor %}
+            <a href="{{product.slug}}reviews">
+                Показать все комментарии (всего {{single_product.count_reviews }})
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
