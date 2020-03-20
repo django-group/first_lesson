@@ -98,10 +98,11 @@
           </a>
         </div>
 
-        <div class="row">
-
-          {% block product_block %}{% endblock %}
-
+          <div class="row">
+          {% for item in products %}
+          {% block product_block %}
+          {% endblock %}
+          {% endfor %}
         </div>
         <!-- /.row -->
 

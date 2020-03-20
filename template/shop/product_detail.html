@@ -1,0 +1,5 @@
+{% extends 'shop\index.html' %}
+{% block product_block %}
+{{ product.title }}
+<form action="{% url 'adress' product.slug %}" method="POST">{{ coment_f.as_p }}</form>
+{% endblock %}

@@ -2,7 +2,22 @@ from django.db import models
 from django.utils.text import slugify
 
 
+class Charact(models.Model):
+    # product = models.ManyToManyField(Product, verbose_name='Товар', blank=True)
+    name = models.CharField('Характеристик', max_length=150)
+    text = models.CharField('Значение', max_length=150)
+
+    def __str__(self):
+        return f'{self.name}: {self.text}'
+
+    class Meta:
+        verbose_name = 'Характеристика'
+        verbose_name_plural = 'Характеристики'
+
+
 class Product(models.Model):
+    manufact = models.CharField('Производитель', null=False, blank=False, max_length=100)
+    charact = models.ManyToManyField(Charact, verbose_name='Характеристики', blank=True)
     title = models.CharField("Название", max_length=150, blank=False, null=False)
     slug = models.SlugField(unique=True, editable=False)
 
@@ -20,7 +35,7 @@ class Product(models.Model):
     # скидка
     asin = models.DecimalField('Код товара', max_digits=10, decimal_places=0)
     # гарантия
-    manufact = models.CharField('Производитель', null=True, blank=True, max_length=100)
+
 
     def __str__(self):
         return f"{self.manufact} {self.title}"
@@ -28,16 +43,6 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Товар'
         verbose_name_plural = 'Товары'
-
-
-class Charact(models.Model):
-    product = models.ManyToManyField(Product,verbose_name='Товар', blank=True)
-    name = models.CharField('Характеристик', max_length=150)
-    text = models.CharField('Значение', max_length=150)
-
-    class Meta:
-        verbose_name = 'Характеристика'
-        verbose_name_plural = 'Характеристики'
 
 
 class Reviews(models.Model):
@@ -52,6 +57,3 @@ class Reviews(models.Model):
     class Meta:
         verbose_name = 'Отзыв'
         verbose_name_plural = 'Отзывы'
-
-
-
