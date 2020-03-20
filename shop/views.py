@@ -3,9 +3,8 @@ from shop import models, forms
 from django.views import generic
 
 
-def foo(requests):
-    context = {'admin': 'http://127.0.0.1:8000/admin', 'div_block': '<div class="col-lg-4 col-md-6 mb-4">',
-               'products': models.Product.objects.all()}
+def products_list(requests):
+    context = {'admin': 'http://127.0.0.1:8000/admin', 'products': models.Product.objects.all()}
     return render(requests, 'shop/product_list.html', context)
 
 

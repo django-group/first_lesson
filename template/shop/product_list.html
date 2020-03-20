@@ -1,15 +1,16 @@
 {% extends 'shop\index.html' %}
 
 {% block product_block %}
+
 <div class="col-lg-4 col-md-6 mb-4">
     <div class="card h-100">
         <a href="#"><img class="card-img-top" src="{{item.image.url}}" alt=""></a>
         <div class="card-body">
             <h4 class="card-title">
-                <a href="{% url 'adress' item.slug %}">{{item.manufact}} {{item.title}}</a>
+                <p align="center"><a href="{% url 'adress' item.slug %}">{{item.manufact}} {{item.title}}</a></p>
             </h4>
-            <h5>{{item.price}}</h5>
-            <p class="card-text">{{item.description}}</p>
+            <h5 align="center">{{item.price}} грн.</h5>
+            <p align="center" class="card-text">{{item.description}}</p>
         </div>
         <div class="card-footer">
             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
