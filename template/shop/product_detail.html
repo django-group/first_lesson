@@ -1,7 +1,5 @@
 {% extends 'shop\index.html' %}
 {% block product_block %}
-{% for item in products %}
-{{ item.title }}
 <div class="card mb-3" style="max-width: 540px;">
     <div class="row no-gutters">
         <div class="col-md-4">
@@ -17,6 +15,5 @@
         </div>
     </div>
 </div>
-{% endfor %}
 <form action="{% url 'adress' product.slug %}" method="POST">{{ coment_f.as_p }}</form>
 {% endblock %}
