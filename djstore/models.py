@@ -49,3 +49,8 @@ class Review(models.Model):
     text = models.TextField(max_length=1000)
     rating = models.FloatField(default=0)
 
+
+class Bucket(models.Model):
+    session_key = models.CharField(max_length=100)
+    product = models.ManyToManyField(Product)
+

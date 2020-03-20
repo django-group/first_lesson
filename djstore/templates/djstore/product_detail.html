@@ -1,12 +1,18 @@
 {% extends 'djstore/base.html' %}
 
 {% block content %}
+    <div class="row" style="border-bottom: 1px solid #000">
+        <a href="{% url 'bucket_url' %}" style="align-content: flex-end">Rdgfhd</a>
+    </div>
+
+
     <h1>{{ product.name }}</h1>
     <img src="{{ product.image.url }}">
     <p>{{ product.description }}</p>
     <p>{{ product.price }}</p>
     <p>{{ product.rating }}</p>
     <p>{{ product.warranty }}</p> </br>
+    <a href="{% url 'add_to_bucket_url' slug=product.slug %}">Buy</a>
 
     <h2>Comments:</h2>
     {% for item in product.get_comments %}

@@ -8,12 +8,13 @@
             {{ form }}
             <button type="submit">&#128269;</button>
             </form>
+            <a href="{% url 'bucket_url' %}" style="align-content: flex-end">R</a>
         </div>
 
         <div class="row">
             <div class="col-md-2" style="border-right: 1px solid #000">
                 {% for item in object_list %}
-                    <ul>{{ item.category }}</ul>
+                    <ul>{{ item.category.category_name }}</ul>
                 {% endfor %}
             </div>
 

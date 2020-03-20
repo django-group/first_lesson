@@ -4,6 +4,8 @@ from djstore import forms
 from django.views import generic
 from django.urls import reverse
 from djstore import filters
+import json
+import random
 
 # Create your views here.
 
@@ -23,6 +25,33 @@ class ProductList(generic.ListView):
         context['form'] = self.form
         #context['model_cat'] = self.model_cat
         return context
+
+
+def add_to_bucket(request, slug):
+    session_key = request.session.get('bucket', [])
+    if not session_key:
+        session_key = str(random.randint(1, 10000))
+        request.session['bucket'] = session_key
+
+    product = models.Product.objects.get(slug=slug)
+    bucket, _ = models.Bucket.objects.get_or_create(session_key=session_key)
+    bucket.save()
+    bucket.product.add(product)
+    response = redirect(reverse('product_detail_url', args=[slug]))
+    return response
+
+
+def bucket_view(request):
+    session_key = request.session.get('bucket', '')
+    bucket = models.Bucket.objects.filter(session_key=session_key)
+    if bucket:
+        products = bucket[0].product.all()
+    else:
+        products = None
+    context = {
+        'bucket': products
+    }
+    return render(request, 'djstore/bucket.html', context)
 
 
 class SearchList(generic.ListView):
