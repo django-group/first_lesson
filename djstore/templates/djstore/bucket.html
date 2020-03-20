@@ -1,10 +1,10 @@
 {% extends 'djstore/base.html' %}
 
 {% block content %}
-    {% if not product %}
+    {% if not bucket %}
         <h1>Your bucket is empty now!</h1>
     {% else %}
-        {%  for item in product %}
+        {%  for item in bucket %}
             <p>{{ item.name }}</p>
             <p>{{ item.price }}</p>
             <hr>
