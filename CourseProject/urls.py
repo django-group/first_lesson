@@ -22,4 +22,5 @@ from CourseProject import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('djstore/', include('djstore.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

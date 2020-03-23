@@ -12,7 +12,7 @@
     <p>{{ product.price }}</p>
     <p>{{ product.rating }}</p>
     <p>{{ product.warranty }}</p> </br>
-    <a href="{% url 'add_to_bucket_url' slug=product.slug %}">Buy</a>
+    <a href="{% url 'add_to_bucket_url' slug=product.slug %}" type="button" class="btn btn-success">Buy</a>
 
     <h2>Comments:</h2>
     {% for item in product.get_comments %}
