@@ -4,8 +4,9 @@ from djstore import forms
 from django.views import generic
 from django.urls import reverse
 from djstore import filters
-import json
 import random
+from django.views.generic.edit import FormView
+from django.contrib.auth.forms import UserCreationForm
 
 # Create your views here.
 
@@ -92,3 +93,13 @@ class ProductDetail(generic.DetailView):
             form.instance.product = obj
             form.save()
             return redirect(reverse('product_detail_url', args=[obj.slug]))
+
+
+class RegisterFormView(FormView):
+    form_class = UserCreationForm
+    success_url = '/login/'
+    template_name = 'registration/register.html'
+
+    def form_valid(self, form):
+        form.save()
+        return redirect('home')
