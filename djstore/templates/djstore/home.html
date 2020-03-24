@@ -24,11 +24,12 @@
                     </div>
                     <div  class="col-md-6">
                     <a href="{% url 'login' %}">Login</a>
-                    {{ user.username }}
+
                     </div>
 
 
                 {% endif %}
+            {{ user }}
             </div>
         </div>
 

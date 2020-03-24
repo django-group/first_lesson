@@ -17,17 +17,15 @@ class ProductList(generic.ListView):
     filter = filters.ProductFilter
     template_name = 'djstore/home.html'
     form = forms.SearchForm
-    user = User
     #model_cat = models.Categorie
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         object_list = self.filter(self.request.GET, queryset=self.model.objects.all())
         context['object_list'] = object_list.qs
-        context['user'] = self.user
         context['filter'] = self.filter
         context['form'] = self.form
-        #context['model_cat'] = self.model_cat
+        #context['model_cat'] = self.models.C
         return context
 
 
