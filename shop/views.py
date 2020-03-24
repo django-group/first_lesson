@@ -8,6 +8,11 @@ def products_list(requests):
     return render(requests, 'shop/product_list.html', context)
 
 
+def product_card(requests, slug):
+    context = {'product': models.Product.objects.get(slug=slug)}
+    return render(requests, 'shop/product_detail.html', context)
+
+
 class Adress(generic.DetailView):
     context_object_name = 'product'
     model = models.Product
@@ -17,5 +22,4 @@ class Adress(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['coment_f'] = self.comment_form
-        print(context)
         return context
