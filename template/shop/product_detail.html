@@ -16,14 +16,12 @@
 </div>
 
 <div class="card mb-3" style="max-width: 900px;">
-
-        <div class="col-lg-6">
-            <div class="card-body">
-                <form action="{% url 'adress' product.slug %}" method="POST">{{ coment_f.as_p }}</form>
-                <button type="button" class="btn btn-secondary">Оставить отзыв</button>
-            </div>
+    <div class="col-lg-6">
+        <div class="card-body">
+            <form action="{% url 'adress' product.slug %}" method="POST">{{ coment_f.as_p }}</form>
+            <button type="button" class="btn btn-secondary">Оставить отзыв</button>
         </div>
-
+    </div>
 </div>
-
+    {% block product_comments %}{% endblock %}
 {% endblock %}

@@ -4,13 +4,15 @@ from django.views import generic
 
 
 def products_list(requests):
-    context = {'admin': 'http://127.0.0.1:8000/admin', 'products': models.Product.objects.all()}
+    context = {'admin': 'http://127.0.0.1:8000/admin',
+               'products': models.Product.objects.all(),
+               'comment': models.Reviews.objects.all()}
     return render(requests, 'shop/product_list.html', context)
 
 
-def product_card(requests, slug):
-    context = {'product': models.Product.objects.get(slug=slug)}
-    return render(requests, 'shop/product_detail.html', context)
+# def product_card(requests, slug):
+#     context = {'comment': models.Reviews.objects.filter(product__slug=slug)}
+#     return render(requests, 'shop/product_detail.html', context)
 
 
 class Adress(generic.DetailView):
@@ -22,4 +24,15 @@ class Adress(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['coment_f'] = self.comment_form
+        context['comment'] = models.Reviews
+        return context
+
+
+class Comments(generic.DetailView):
+    context_object_name = 'comment'
+    model = models.Reviews
+    template_name = 'shop/comments.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         return context

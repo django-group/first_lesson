@@ -34,7 +34,6 @@ class Product(models.Model):
     # остаток
     # скидка
     asin = models.DecimalField('Код товара', max_digits=10, decimal_places=0)
-
     # гарантия
 
     def __str__(self):
