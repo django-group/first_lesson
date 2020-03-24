@@ -17,4 +17,5 @@ class Adress(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['coment_f'] = self.comment_form
+        print(context)
         return context
